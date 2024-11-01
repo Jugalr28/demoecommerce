@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="row">
+    <img src="{% static 'images/portrait.jpg' %}" height="600px" width="100%">
+</div>
+<div class="row mt-3 px-3" style="margin-bottom:100px">
+    <div class="cool-12">
+        <h3 class="text-center fw-bold text-light mt-5 mb-5">Our Collections</h3>
+        <p style="text-align:justify;line-height:2" class="fs-5">Paragraphs are the building blocks of papers. Many students define paragraphs in terms of length: a paragraph is a group of at least five sentences, a paragraph is half a page long, etc. In reality, though, the unity and coherence of ideas among sentences is what constitutes a paragraph. A paragraph is defined as “a group of sentences or a single sentence that forms a unit” (Lunsford and Connors 116). Length and appearance do not determine whether a section in a paper is a paragraph.</p>
+    </div>
+</div>
+
+<div class="container mt-5 mb-5">
+
+    <div class="row">
+        {% for i in cat %}
+        <div class="col-sm-4">
+            <div class="card" style="width: 18rem;">
+  <img src="{{i.image.url}}" height="200px" width="100%" class="card-img-top" alt="...">
+  <div class="card-body text-center">
+    <h5 class="card-title">{{i.name}}</h5>
+
+      <a href="{% url 'shop:products' i.id %}" class="btn btn-secondary">Products</a>
+  </div>
+</div></div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
